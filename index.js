@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { Circle, Triangle } = require('./library/shapes')
+const {Circle, Triangle, Square} = require('./library/shapes')
+
+
+
 
 function showQuestions() {
     inquirer.prompt([
@@ -29,7 +32,29 @@ function showQuestions() {
           message: "What color will the text be?"
         }    ])
     .then(answers => {
-        fs.writeFile('logo.svg', JSON.stringify(answers, null, 2), (err) => {
+        let shape;
+        switch (answers.shape) {
+            case 'circle':
+                shape = new Circle(50, 50, 50, answers.shapeColor);
+                break;
+            case 'triangle':
+                shape =  new Triangle(0,0,100,100,100, 0, answers.shapeColor);
+                break;
+            case 'square':
+                shape = new Square(25, 25, 50, answers.shapeColor);
+                break;
+            default:
+                console.error('Invalid shape');
+                return;
+        }
+
+        const svgCode = `
+            <<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            ${shape.toSVG()}
+            ${shape.printText()}
+        </svg>`;
+
+        fs.writeFile('logo.svg', svgCode, (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -41,6 +66,5 @@ function showQuestions() {
         console.error(err);
     });
 }
-
 
 showQuestions();
