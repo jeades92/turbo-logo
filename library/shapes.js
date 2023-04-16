@@ -29,8 +29,8 @@ class Triangle extends Shape {
 }
 
 class Circle extends Shape {
-    constructor(text,textColor, shapeColor){
-        super(text,textColor, shapeColor, "circle")
+    constructor(text, textColor, shapeColor){
+        super(text, textColor, shapeColor, "circle")
     }
     render(){
         return `<circle cx="50" cy="50" r="40"  style="fill: ${this.shapeColor};" />`
@@ -45,7 +45,7 @@ class Square extends Shape {
         super(text, textColor, shapeColor, "square")
     }
     render(){
-        return '<rect x="25" y="25" width="50" height="50" fill="red" />'
+        return `<rect x="25" y="25" width="" height="50" style="fill: ${this.shapeColor};" />`
     }
     toSVG() {
         return this.render();

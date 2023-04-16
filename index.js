@@ -35,21 +35,22 @@ function showQuestions() {
         let shape;
         switch (answers.shape) {
             case 'circle':
-                shape = new Circle(50, 50, 50, answers.shapeColor);
+                shape = new Circle(answers.text, answers.textColor, answers.shapeColor);
                 break;
             case 'triangle':
-                shape =  new Triangle(0,0,100,100,100, 0, answers.shapeColor);
+                shape =  new Triangle(answers.text, answers.textColor, answers.shapeColor);
                 break;
             case 'square':
-                shape = new Square(25, 25, 50, answers.shapeColor);
+                shape = new Square(answers.text, answers.textColor, answers.shapeColor);
                 break;
             default:
                 console.error('Invalid shape');
                 return;
         }
+        
 
         const svgCode = `
-            <<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
             ${shape.toSVG()}
             ${shape.printText()}
         </svg>`;
