@@ -24,3 +24,7 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 <h3>Walkthrough Video</h3>
 
 https://drive.google.com/file/d/18doWRh_VAZeDLktoNXKKc_Qtjnd-dLhd/view
+
+<h3>Collaborators</h3>
+
+<p>Alexis Gonzalez</p>
